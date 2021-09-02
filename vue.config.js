@@ -20,5 +20,7 @@ module.exports = {
                 // 修改它的选项...
                 return options
             })
-    }
+    },
+    // 设置预览项目地址为smartdata-ui
+    publicPath: process.env.NODE_ENV === 'production' ? '/smartdata-ui/' : '/',
 }
