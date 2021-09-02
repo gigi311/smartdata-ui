@@ -1,4 +1,6 @@
 
+import 'element-ui/lib/theme-chalk/index.css'; // 原主题样式
+import ElementUI from 'element-ui';
 // 导入颜色选择器组件
 import demoOne from "./demo-one";
  
@@ -6,6 +8,7 @@ import demoOne from "./demo-one";
 const components = [demoOne];
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function(Vue) {
+    Vue.use(ElementUI);
   // 判断是否安装
   if (install.installed) return;
   // 遍历注册全局组件
