@@ -1,10 +1,15 @@
 {
   "name": "smartdata-ui",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "private": false,
   "license": "MIT",
   "description": "仅供测试，别下载",
   "main": "lib/smartdataui.umd.min.js",
+  "homepage": "https://gigi311.github.io/smartdata-ui/",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/gigi311/smartdata-ui.git"
+  },
   "keywords": [
     "practise"
   ],
