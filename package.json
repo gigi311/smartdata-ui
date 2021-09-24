@@ -7,8 +7,8 @@
   "main": "lib/smartdataui.umd.min.js",
   "homepage": "https://gigi311.github.io/smartdata-ui/",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/gigi311/smartdata-ui.git"
+    "type": "git",
+    "url": "https://github.com/gigi311/smartdata-ui.git"
   },
   "keywords": [
     "practise"
@@ -24,7 +24,10 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "element-ui": "^2.15.6",
-    "vue": "^2.6.11"
+    "less": "^4.1.1",
+    "less-loader": "^10.0.1",
+    "vue": "^2.6.11",
+    "vue-router": "^3.5.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -34,6 +37,7 @@
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
     "gh-pages": "^3.2.3",
+    "vue-markdown-loader": "^2.4.1",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

@@ -19,7 +19,18 @@ module.exports = {
             .tap(options => {
                 // 修改它的选项...
                 return options
-            })
+            });
+        config.module
+            .rule('md')
+            .test(/\.md$/)
+            .use('vue-loader')
+            .loader('vue-loader')
+            .end()
+            .use('vue-markdown-loader')
+            .loader('vue-markdown-loader/lib/markdown-compiler')
+            .options({
+                raw: true
+            });
     },
     // 设置预览项目地址为smartdata-ui
     publicPath: process.env.NODE_ENV === 'production' ? '/smartdata-ui/' : '/',
