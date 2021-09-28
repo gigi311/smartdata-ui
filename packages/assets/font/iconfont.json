@@ -1,0 +1,23 @@
+{
+  "id": "2840115",
+  "name": "smartdata-ui",
+  "font_family": "sdiconfont",
+  "css_prefix_text": "sdicon-",
+  "description": "smartdata-ui",
+  "glyphs": [
+    {
+      "icon_id": "19657550",
+      "name": "撤销",
+      "font_class": "undo",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "24662222",
+      "name": "重做",
+      "font_class": "redo",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+.code_div {
+    border       : 1px solid #eaeefb;
+    padding      : 10px;
+    border-radius: 3px;
+}
+.markdown-body hr {
+    height: 1px!important;
+}
+.markdown-body table{
+    display: inline-table!important;
+    color:#606266;
+    font-size: 14px;
+}
+.markdown-body table thead tr th{
+    font-weight: 100;
+    color:#909399;
+}
+.markdown-body table tr:nth-child(2n) {
+    background-color: transparent!important;
+}
+.markdown-body table tbody tr, .markdown-body table thead tr {
+    border-bottom: 1px solid #dcdfe6;
+    border-top: none;
+}
+.markdown-body table tbody td, .markdown-body table thead th {
+    border: none;
+    padding: 15px;
+}

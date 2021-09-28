@@ -40,7 +40,11 @@
             <el-input type="textarea" v-model="form.desc"></el-input>
         </el-form-item>
         <el-form-item>
-            <el-button type="primary" @click="onSubmit">立即创建</el-button>
+            <el-button type="primary" @click="onSubmit">立即创建
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#sdicon-undo"></use>
+                </svg>
+            </el-button>
             <el-button>取消</el-button>
         </el-form-item>
     </el-form>
@@ -49,7 +53,7 @@
 
 <script>
 export default {
-    name: 'demoOne',
+    name: 'demo',
     data() {
         return {
             form: {

@@ -41,6 +41,9 @@ export default {
             }, {
                 text: 'demo-one',
                 path: '/comps/demo-one'
+            }, {
+                text: 'HistoryList 回退前进组件',
+                path: '/comps/history-list'
             }],
         }
     },

@@ -12,7 +12,10 @@ const router = new Router({
     }, {
         path: '/comps/demo-one',
         component: resolve => require(['../components/demo-one/index.md'], resolve)
-    }, ]
+    }, {
+        path: '/comps/history-list',
+        component: resolve => require(['../components/history-list/index.md'], resolve)
+    },]
 });
 
 export default router;
