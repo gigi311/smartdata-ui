@@ -1,9 +1,9 @@
 {
   "name": "smartdata-ui",
-  "version": "0.2.3",
+  "version": "0.2.5",
   "private": false,
   "license": "MIT",
-  "description": "仅供测试，别下载",
+  "description": "基于Element-ui的业务组件库，欢迎学习使用。",
   "main": "lib/smartdataui.umd.min.js",
   "homepage": "https://gigi311.github.io/smartdata-ui/",
   "repository": {

@@ -26,7 +26,7 @@
 
 <script>
 export default {
-    name: 'history-list',
+    name: 'SdHistoryList',
     props: {
         //展示方式，1：列表2：前进后退按钮
         showType: {

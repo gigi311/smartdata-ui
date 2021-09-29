@@ -10,9 +10,6 @@ const router = new Router({
         path: '/quickstart',
         component: resolve => require(['../components/defaults/快速上手.md'], resolve)
     }, {
-        path: '/comps/demo-one',
-        component: resolve => require(['../components/demo-one/index.md'], resolve)
-    }, {
         path: '/comps/history-list',
         component: resolve => require(['../components/history-list/index.md'], resolve)
     },]
