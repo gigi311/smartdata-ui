@@ -1,2 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0aa15a"],{1005:function(s,t,e){"use strict";e.r(t);var n=function(){var s=this,t=s.$createElement,e=s._self._c||t;return e("section",[e("h2",[s._v("demo-one组件")]),e("p",[s._v("练习的组件等等等")]),e("h3",[s._v("常规使用方法")]),e("p",[e("sd-history-list"),e("sd-history-list",{attrs:{showType:2}}),e("sd-demo")],1)])},o=[],a=e("2877"),i={},l=Object(a["a"])(i,n,o,!1,null,null,null);t["default"]=l.exports}}]);
-//# sourceMappingURL=chunk-2d0aa15a.38ad3fbe.js.map
