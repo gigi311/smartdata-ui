@@ -4,19 +4,20 @@
 ### 基本用法
 <div class="code_div">
 
-##### 可查看操作步骤的历史组件   <sd-history-list></sd-history-list>   
-##### 只有回退及重做的历史组件    <sd-history-list :showType=2></sd-history-list>
+<demo-history-list></demo-history-list>
 
 ---
 * 初始化方法
 ``` html
 <sd-history-list ref="his" @loadHistory="fn"></sd-history-list>
-<sd-history-list ref="his" :showType=2 @loadHistory="fn"></sd-history-list>
+<sd-history-list ref="his" :showType=2 @load-history="fn"></sd-history-list>
 ```
 * 灌入数据方法
 ``` js
-const elements = [{a:1},{b:2}];
-this.$refs.his.setHistory('开始', elements)
+const code = new Date().getTime();
+this.$refs.his.setHistory(code, {
+    data: code
+},'el-icon-star-off');
 ```
 * 响应回退前进事件
 ``` js
@@ -68,9 +69,10 @@ buttonSize|按钮大小设置|String|medium / small / mini  |small
 ### Event
 事件名称|说明|回调参数
 :---|:---|:---
-loadHistory|在下拉菜单中点击某一历史记录或点击前进、后退按钮时触发|步骤存储的对象
+load-history|在下拉菜单中点击某一历史记录或点击前进、后退按钮时触发|步骤存储的对象
 
 ### Methods
 方法名|说明|参数
 :---|:---|:---
-setHistory|向组件添加一条记录。name:列表显示名称;elements:存储对象;icon:可选的图标class|(name, elements, icon = '')
+setHistory|向组件添加一条记录。name:列表显示名称;elements:存储对象;icon:可选的图标class，支持element-ui的所有icon图表类|(name, elements, icon = '')
+clearAll|清除组件中的所有历史记录数据。|无

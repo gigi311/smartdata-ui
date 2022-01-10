@@ -41,6 +41,9 @@ export default {
             }, {
                 text: 'HistoryList 回退前进组件',
                 path: '/comps/history-list'
+            }, {
+                text: 'JsonMenu 数据菜单组件',
+                path: '/comps/json-menu'
             }],
         }
     },

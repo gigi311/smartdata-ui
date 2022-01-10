@@ -12,6 +12,9 @@ const router = new Router({
     }, {
         path: '/comps/history-list',
         component: resolve => require(['../components/history-list/index.md'], resolve)
+    },{
+        path: '/comps/json-menu',
+        component: resolve => require(['../components/json-menu/index.md'], resolve)
     },]
 });
 

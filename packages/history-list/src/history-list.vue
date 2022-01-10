@@ -1,6 +1,6 @@
 <template>
 <div class="history_list_content">
-    <el-popover v-if="showType==1" width="150" trigger="hover" popper-class="history_list_popover">
+    <el-popover v-if="showType==1" trigger="hover" popper-class="history_list_popover">
         <div v-for="(r,idx) in hisData" :key="idx" :class="`record ${r.class}`" @click="gotoHistory(idx)">
             <i :class="r.icon"></i>
             {{r.name}}
@@ -103,7 +103,12 @@ export default {
             });
             this.hisData = newOne;
             //回显历史内容
-            this.$emit('loadHistory', this.hisData[this.curPoint].json.ele)
+            this.$emit('load-history', this.hisData[this.curPoint].json.ele)
+        },
+        //清空所有记录
+        clearAll(){
+            this.hisData = [];
+            this.curPoint = -1;
         }
     }
 }
