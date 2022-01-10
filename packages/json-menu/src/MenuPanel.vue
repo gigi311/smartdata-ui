@@ -1,16 +1,14 @@
 <template>
 <div :class="parentCls">
-    <el-menu :default-active="activeMenu" :class="className" :mode="mode" 
-    :collapse="collapseStatus" :unique-opened="true" :collapse-transition="false" 
-    @select="menuSel">
+    <el-menu :default-active="activeMenu" :class="className" :mode="mode" :collapse="collapseStatus" :unique-opened="true" :collapse-transition="false" :background-color="colorSet[0]" :text-color="colorSet[1]" :active-text-color="colorSet[2]" @select="menuSel">
         <component v-for="(n,i) in menuList" :key="i" :is="n.children && n.children.length>0 ? 'menu-sub-panel':'el-menu-item'" :index="n.code" :data="n">
             <template v-if="(n.children || []).length==0">
-                <i :class="n.iconClass"></i>
-                <span>{{n.name}}</span>
+                <i :class="n.iconClass || 'el-icon-s-operation'"></i>
+                <span slot="title">{{n.name}}</span>
             </template>
         </component>
     </el-menu>
-    <div v-if="pos == 'left' && collapse===true" class="toggle-button" @click="_openCloseFn">
+    <div v-if="pos == 'left' && collapse===true" class="toggle-button" @click="_openCloseFn" :style="arrowStyle">
         <i class="el-icon-arrow-left" v-show="!collapsed"></i>
         <i class="el-icon-arrow-right" v-show="collapsed"></i>
     </div>
@@ -29,13 +27,18 @@ export default {
         "pos" /**菜单方式top为横向left为纵向 */ ,
         "collapse" /**是否可收缩 */ ,
         "menuList" /**菜单数据 */ ,
+        "colors" /**颜色数组： background-color  text-color  active-text-color*/ ,
     ],
-    mounted() {
+    created() {
         //处理样式
         if (this.pos == "left") {
             this.parentCls = "menu_panel_content maxwidth";
             this.className = "left-menu";
             this.mode = "vertical";
+        }
+        //处理颜色
+        if(Array.isArray(this.colors) && this.colors.length<=3){
+            this.colors.forEach((n,i)=>this.colorSet[i] = n);
         }
     },
     data() {
@@ -44,6 +47,7 @@ export default {
             className: "top-menu",
             mode: "horizontal",
             collapsed: false,
+            colorSet: ['','','']
         };
     },
     methods: {
@@ -72,8 +76,16 @@ export default {
     },
     computed: {
         collapseStatus() {
-            return (this.pos == "left" && this.collapse===true) ? this.collapsed : false;
+            return (this.pos == "left" && this.collapse === true) ? this.collapsed : false;
         },
+        arrowStyle() {
+            const self = this;
+            console.log(this.colorSet);
+            return {
+                backgroundColor: self.colorSet[0],
+                color: self.colorSet[1],
+            }
+        }
     },
 };
 </script>
@@ -83,6 +95,7 @@ export default {
     height: 100%;
     position: relative;
     border-right: solid 1px #e6e6e6;
+
     li {
         margin-top: 0;
     }
@@ -95,19 +108,19 @@ export default {
         transition: .5s ease all;
     }
 
-    .left-menu{
-      height: calc(100% - 30px);
-    //   overflow: auto;
-      border-right:none;
-      padding-left: 0;
+    .left-menu {
+        height: calc(100% - 30px);
+        //   overflow: auto;
+        border-right: none;
+        padding-left: 0;
     }
 
     .toggle-button {
         transition: .5s ease all;
         width: 100%;
         background-color: white;
-        height: 30px;
-        line-height: 30px;
+        height: 50px;
+        line-height: 50px;
         position: absolute;
         bottom: 0px;
         cursor: pointer;

@@ -84,7 +84,7 @@ export default {
 * 初始化方法
 
 ``` html
-<sd-json-menu pos="left" :menuList="jsonData" :activeMenu="activeMenu" :collapse="true" @select="menuChange" @menu-collapse="changeWidth"></sd-json-menu>
+<sd-json-menu pos="left" :menuList="jsonData" :activeMenu="activeMenu" :collapse="true" :colors="colors" @select="menuChange" @menu-collapse="changeWidth"></sd-json-menu>
 ```
 
 ``` js
@@ -139,7 +139,8 @@ export default {
                     "iconClass": "el-icon-s-platform",
                     "children": null,
                 },
-            ]
+            ],
+            colors:['#304156','#bfcbd9','#f4f4f5']
         }
     },
     methods:{
@@ -164,6 +165,7 @@ menuList|菜单数据数组|Array|-|-
 activeMenu|当前选中的菜单(code)|String|-|-
 pos|菜单展现形式|String|left / top|top
 collapse|是否支持折叠，只有pos='left'时有效|Boolean|true / false|false
+colors|菜单颜色|Array|-|['#ffffff','#303133','#409EFF'] <br>按照背景色、文字颜色、选中文字颜色顺序配置
 
 ### Event
 事件名称|说明|回调参数
