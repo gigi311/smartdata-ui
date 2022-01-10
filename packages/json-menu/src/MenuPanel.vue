@@ -8,7 +8,7 @@
             </template>
         </component>
     </el-menu>
-    <div v-if="pos == 'left' && collapse===true" class="toggle-button" @click="_openCloseFn" :style="arrowStyle">
+    <div v-if="pos == 'left' && showCollapse===true" class="toggle-button" @click="_openCloseFn" :style="arrowStyle">
         <i class="el-icon-arrow-left" v-show="!collapsed"></i>
         <i class="el-icon-arrow-right" v-show="collapsed"></i>
     </div>
@@ -28,6 +28,7 @@ export default {
         "collapse" /**是否可收缩 */ ,
         "menuList" /**菜单数据 */ ,
         "colors" /**颜色数组： background-color  text-color  active-text-color*/ ,
+        "showCollapse" /**是否显示收缩展开按钮 */ ,
     ],
     created() {
         //处理样式
@@ -76,7 +77,7 @@ export default {
     },
     computed: {
         collapseStatus() {
-            return (this.pos == "left" && this.collapse === true) ? this.collapsed : false;
+            return this.showCollapse === true && this.pos == "left" ? this.collapsed : this.collapse;
         },
         arrowStyle() {
             const self = this;

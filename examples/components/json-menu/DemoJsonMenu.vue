@@ -2,7 +2,7 @@
 <div>
     <sd-json-menu v-if="pos != 'left'" :menuList="jsonData" :activeMenu="activeMenu" @select="menuChange"></sd-json-menu>
     <div v-else :style="divStyle">
-        <sd-json-menu pos="left" :menuList="jsonData" :activeMenu="activeMenu" :collapse="true" @select="menuChange" @menu-collapse="changeWidth" :colors="colors"></sd-json-menu>
+        <sd-json-menu pos="left" :menuList="jsonData" :activeMenu="activeMenu" :collapse="collapse" @select="menuChange" @menu-collapse="changeWidth" :colors="colors"></sd-json-menu>
     </div>
 </div>
 </template>
@@ -64,7 +64,8 @@ export default {
                 },
             ],
             width:300,
-            colors:['#304156','#bfcbd9','#f4f4f5']
+            colors:['#304156','#bfcbd9','#f4f4f5'],
+            collapse:false,
         }
     },
     methods:{

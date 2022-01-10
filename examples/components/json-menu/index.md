@@ -164,8 +164,11 @@ export default {
 menuList|菜单数据数组|Array|-|-
 activeMenu|当前选中的菜单(code)|String|-|-
 pos|菜单展现形式|String|left / top|top
-collapse|是否支持折叠，只有pos='left'时有效|Boolean|true / false|false
-colors|菜单颜色|Array|-|['#ffffff','#303133','#409EFF'] <br>按照背景色、文字颜色、选中文字颜色顺序配置
+collapse|是折叠还是展示，只有pos='left'时有效|Boolean|true / false|false
+colors|菜单颜色|Array|-|['#ffffff','#303133','#409EFF'] <br>按照背景色、文字颜色、选中文字颜色<br>顺序配置
+showCollapse|是否显示收缩展开按钮|Boolean|true / false|false
+
+
 
 ### Event
 事件名称|说明|回调参数
