@@ -15,6 +15,9 @@ const router = new Router({
     },{
         path: '/comps/json-menu',
         component: resolve => require(['../components/json-menu/index.md'], resolve)
+    },{
+        path: '/comps/space-select',
+        component: resolve => require(['../components/space-select/index.md'], resolve)
     },]
 });
 

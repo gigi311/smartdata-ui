@@ -44,6 +44,9 @@ export default {
             }, {
                 text: 'JsonMenu 数据菜单组件',
                 path: '/comps/json-menu'
+            }, {
+                text: 'SpaceSelect 空间选择组件',
+                path: '/comps/space-select'
             }],
         }
     },
