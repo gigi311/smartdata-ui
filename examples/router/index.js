@@ -18,6 +18,9 @@ const router = new Router({
     },{
         path: '/comps/space-select',
         component: resolve => require(['../components/space-select/index.md'], resolve)
+    },{
+        path: '/comps/data-input',
+        component: resolve => require(['../components/data-input/index.md'], resolve)
     },]
 });
 

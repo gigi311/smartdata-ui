@@ -47,6 +47,9 @@ export default {
             }, {
                 text: 'SpaceSelect 空间选择组件',
                 path: '/comps/space-select'
+            }, {
+                text: 'DataInput 输入框组件',
+                path: '/comps/data-input'
             }],
         }
     },
