@@ -1,19 +1,19 @@
 <template>
 <el-dialog :title="title" :visible.sync="dialogVisible" :width="width" :before-close="handleClose" :modal-append-to-body="false" class="data_dialog" :close-on-click-modal="false">
-    <div class="input_picker_body">
+    <div class="input_picker_body" :style="`grid-template-columns: 1fr ${multiple ? '1fr' : ''}`">
         <!-- 待选卡片 -->
         <el-card class="box-card" shadow="never">
             <div slot="header" class="card_header_div">
-                <span>待选</span>
+                <span v-if="multiple">待选</span>
                 <el-input :readonly="loading" placeholder="请输入内容后回车查询" prefix-icon="el-icon-search" size="small" @change="searchData(true)" clearable v-model="searchText">
                 </el-input>
-                <div>
+                <div v-if="multiple">
                     <el-button :disabled="loading" type="text" size="small" @click="changeAllSels(true)">全选(本页)</el-button>
                     <el-button :disabled="loading" type="text" size="small" @click="changeAllSels(false)">清除(本页)</el-button>
                 </div>
             </div>
-            <el-table :data="waitSelData" height="300" :show-header="false" size="mini" style="width: 100%" v-loading="loading">
-                <el-table-column width="55">
+            <el-table :data="waitSelData" height="300" :show-header="false" size="mini" style="width: 100%" v-loading="loading" :highlight-current-row="!multiple" @current-change="curRow=arguments[0]">
+                <el-table-column width="55" v-if="multiple">
                     <template slot-scope="scope">
                         <el-checkbox v-model="scope.row.checked" @change="val=>checkboxChange(val,scope.row.text)"></el-checkbox>
                     </template>
@@ -25,7 +25,7 @@
             </el-pagination>
         </el-card>
         <!-- 已选卡片 -->
-        <el-card class="box-card" shadow="never">
+        <el-card class="box-card" shadow="never" v-show="multiple">
             <div slot="header" class="card_header_div">
                 <span>已选</span>
                 <el-button type="text" size="small" @click="haveSelData=[]">清空已选</el-button>
@@ -46,7 +46,7 @@
     </div>
     <span slot="footer" class="dialog-footer">
         <el-button @click="close">关 闭</el-button>
-        <el-button @click="$emit('submit', haveSelData.join(',')),close()" type="primary" :disabled="haveSelData.length==0">确 定</el-button>
+        <el-button @click="okSubmit" type="primary" :disabled="multiple ? haveSelData.length==0 : curRow==null">确 定</el-button>
     </span>
 </el-dialog>
 </template>
@@ -69,21 +69,23 @@ export default {
         queryFn: {
             type: Function,
             default: ()=>{}
-        }
+        },
+        multiple:Boolean,
+        multipleLimit:Number,
     },
     data() {
         return {
-            width: '60%',
+            width: this.multiple ? '60%' : '30%',
             searchText: '',
             haveSelData: [],//已选
             loading: false,//待选表格遮罩
+            curRow: null,//单选时的当前选中行
             pageInfo: {
                 currentPage: 1,
                 pageSize: 20,
                 total: 0,
                 data: []
             }
-
         }
     },
 
@@ -145,6 +147,24 @@ export default {
             let temp = [].concat(this.haveSelData);
             temp = temp.filter(n=>n!=text);
             this.haveSelData = temp;
+        },
+
+        okSubmit() {
+            if(this.multiple === true){//多选
+                if(this.multipleLimit > 0 && this.haveSelData.length > this.multipleLimit){
+                    this.$message({
+                        message: `您选择数据条数已经超过最大条数(${this.multipleLimit}条)，请重新选择`,
+                        type: 'warning'
+                    });
+                    return;
+                }
+                this.$emit('submit', this.haveSelData.join(','))
+            }else{//单选
+                this.$emit('submit', this.curRow.text)
+            }
+
+            // 关闭窗口
+            this.close();
         }
     },
     computed: {

@@ -9,7 +9,7 @@
 ---
 * 初始化方法
 ``` html
-<sd-history-list ref="his" @loadHistory="fn"></sd-history-list>
+<sd-history-list ref="his" @load-history="fn"></sd-history-list>
 <sd-history-list ref="his" :showType=2 @load-history="fn"></sd-history-list>
 ```
 * 灌入数据方法
@@ -59,11 +59,11 @@ metheds:{
 ### Attributes
 参数|说明|类型|可选|默认
 :---|:---|:---|:---|:---
-showType|展示方式|Number|1：列表2：按钮|1
-max|历史记录最大条数|Number|-|15
-noHistoryText|无操作历史时显示内容，只有showType=1时有效|String|-|无操作历史
-buttonText|触发按钮的文字内容，只有showType=1时有效|String|-|操作历史
-buttonSize|按钮大小设置|String|medium / small / mini  |small
+showType|展示方式|number|1：列表2：按钮|1
+max|历史记录最大条数|number|-|15
+noHistoryText|无操作历史时显示内容，只有showType=1时有效|string|-|无操作历史
+buttonText|触发按钮的文字内容，只有showType=1时有效|string|-|操作历史
+buttonSize|按钮大小设置|string|medium / small / mini  |small
 
 
 ### Event

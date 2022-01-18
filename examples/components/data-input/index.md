@@ -3,17 +3,130 @@
 ### 基本用法
 <div class="code_div">
 <demo-data-input></demo-data-input>
+
+---
+* 初始化方法
+
+``` html
+<sd-data-input :query-fn="searchFn" v-model="ipv"></sd-data-input>
+```
+
+``` js
+export default {
+    data(){
+        return {
+            ipv: 'abc'
+        }
+    },
+
+    methods: {
+        // 获取数据的方法
+        // @param: pageInfo = {pageNum:1,pageSize:20,q:''}
+        // @param: cb 回调函数参数为翻页数据信息
+        searchFn(pageInfo, cb){
+            setTimeout(()=>cb({total:100, data:[1,2,3]}),1000);
+        }
+    }
+}
+```
+
 </div>
+
+### 组件大小
+<div class="code_div">
+<demo-data-input type="size"></demo-data-input>
+
+---
+* 初始化方法
+
+``` html
+<sd-data-input :query-fn="searchFn" v-model="ipv"></sd-data-input>
+<sd-data-input :query-fn="searchFn" v-model="ipv" size="small"></sd-data-input>
+<sd-data-input :query-fn="searchFn" v-model="ipv" size="mini"></sd-data-input>
+```
+
+``` js
+export default {
+    data(){
+        return {
+            ipv: 'abc'
+        }
+    },
+
+    methods: {
+        // 获取数据的方法
+        // @param: pageInfo = {pageNum:1,pageSize:20,q:''}
+        // @param: cb 回调函数参数为翻页数据信息
+        searchFn(pageInfo, cb){
+            setTimeout(()=>cb({total:100, data:[1,2,3]}),1000);
+        }
+    }
+}
+```
+</div>
+
+### 禁用状态
+<div class="code_div">
+<demo-data-input type="disabled" :disabled="true"></demo-data-input>
+
+---
+* 初始化方法
+
+``` html
+<sd-data-input :query-fn="searchFn" v-model="ipv" :disabled="true"></sd-data-input>
+```
+</div>
+
+### 自定义图标
+<div class="code_div">
+<demo-data-input type="icon"></demo-data-input>
+
+---
+* 初始化方法
+
+``` html
+<sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit"></sd-data-input>
+<sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-share"></sd-data-input>
+```
+</div>
+
+
+### 单选
+<div class="code_div">
+<demo-data-input type="simple"></demo-data-input>
+
+---
+* 初始化方法
+
+``` html
+<sd-data-input :query-fn="searchFn" v-model="ipv" :multiple="false"></sd-data-input>
+```
+</div>
+
 
 
 ### Attributes
 参数|说明|类型|可选|默认
 :---|:---|:---|:---|:---
+value/v-model|绑定值|string|-|-
+query-fn|获取弹开窗口列表数据的方法|function|-|fn(pageInfo, cb)<br>pageInfo:{pageNum,pageSize,q}<br>q是查询输入内容<br><br>cb:回调函数<br>参数对象中至少包含：total,data属性<br>例如：cb({total:10,data:['a','b','c']})
+size|组件大小设置|string|medium / small / mini  |medium
+disabled|禁用|boolean|-|false
+icon-class|自定义按钮图标|string|element-ui图标库|el-icon-s-operation
+editable|是否可手工录入|boolean|-|true
+multiple|是否多选|boolean|-|true
+multipleLimit|在允许多选时，配置可选择项数量，<br>0则不限制|number|-|0
+
+
 
 
 ### Event
 事件名称|说明|回调参数
 :---|:---|:---
+blur	|在 Input 失去焦点时触发	|(event: Event)
+focus	|在 Input 获得焦点时触发	|(event: Event)
+change	|仅在输入框失去焦点或用户按下回车时触发	|(value: string | number)
+input	|在 Input 值改变时触发	|(value: string | number)
 
 ### Methods
 方法名|说明|参数

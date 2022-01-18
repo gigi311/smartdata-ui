@@ -43,7 +43,7 @@ export default {
 <demo-space-select type="2"></demo-space-select>
 
 ---
-
+* 初始化方法
 ``` html
 <sd-space-select :value.sync="value" :options="options" size="medium" @set-default="setDefault"></sd-space-select>
 <sd-space-select :value.sync="value" :options="options" size="small" @set-default="setDefault"></sd-space-select>
@@ -81,7 +81,7 @@ export default {
 <demo-space-select type="3"></demo-space-select>
 
 ---
-
+* 初始化方法
 ``` html
 <sd-space-select :value.sync="value" :options="options" @set-default="setDefault">
     <template v-slot="slotProps">
