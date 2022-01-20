@@ -181,7 +181,7 @@ export default {
         // 打开窗口时，查询备选数据
         dialogVisible(val){
             // 初始化已选内容
-            this.haveSelData =  (this.inputVal || '').split(',');
+            this.haveSelData =  (this.inputVal || '').split(',').filter(n=>n.trim().length>0);
             val===true && this.searchData();
         }
     }
