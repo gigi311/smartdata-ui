@@ -21,6 +21,14 @@
     <div v-if="type=='simple'">
         <sd-data-input :query-fn="searchFn" v-model="ipv" :multiple="false" @input="test"></sd-data-input>
     </div>
+    <div v-if="type=='daterange'" class="column_grid">
+        <span>日期区间</span>
+        <sd-data-input v-model="ipv" type="daterange" @input="test"></sd-data-input>
+        <span>日期时间区间</span>
+        <sd-data-input v-model="ipv" type="datetimerange" @input="test"></sd-data-input>
+        <span>日期时间</span>
+        <sd-data-input v-model="ipv" type="datetime" @input="test"></sd-data-input>
+    </div>
 
 </div>
 </template>

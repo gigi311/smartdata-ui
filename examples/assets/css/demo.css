@@ -6,23 +6,23 @@
 .markdown-body hr {
     height: 1px!important;
 }
-.markdown-body table{
+.markdown-body table:not([class]){
     display: inline-table!important;
     color:#606266;
     font-size: 14px;
 }
-.markdown-body table thead tr th{
+.markdown-body table:not([class]) thead tr th{
     font-weight: 100;
     color:#909399;
 }
-.markdown-body table tr:nth-child(2n) {
+.markdown-body table:not([class]) tr:nth-child(2n) {
     background-color: transparent!important;
 }
-.markdown-body table tbody tr, .markdown-body table thead tr {
+.markdown-body table:not([class]) tbody tr, .markdown-body table:not([class]) thead tr {
     border-bottom: 1px solid #dcdfe6;
     border-top: none;
 }
-.markdown-body table tbody td, .markdown-body table thead th {
+.markdown-body table:not([class]) tbody td, .markdown-body table:not([class]) thead th {
     border: none;
     padding: 15px;
 }

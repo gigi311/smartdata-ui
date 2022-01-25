@@ -72,6 +72,7 @@ export default {
         },
         multiple:Boolean,
         multipleLimit:Number,
+        separator: String, //链接分隔符
     },
     data() {
         return {
@@ -158,7 +159,7 @@ export default {
                     });
                     return;
                 }
-                this.$emit('submit', this.haveSelData.join(','))
+                this.$emit('submit', this.haveSelData.join(this.separatorFlag))
             }else{//单选
                 this.$emit('submit', this.curRow.text)
             }
@@ -175,6 +176,9 @@ export default {
                 waitArr.push({text:n, checked:this.haveSelData.includes(String(n))});
             });
             return waitArr;
+        },
+        separatorFlag(){
+            return this.separator || ','
         }
     },
     watch: {
