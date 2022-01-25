@@ -85,7 +85,7 @@ export default {
 * 初始化方法
 
 ``` html
-<sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit"></sd-data-input>
+<sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit" :multipleLimit="2"></sd-data-input>
 <sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-share"></sd-data-input>
 ```
 </div>
@@ -129,6 +129,7 @@ value/v-model|绑定值|string|-|-
 query-fn|获取弹开窗口列表数据的方法|function|-|fn(pageInfo, cb)<br>pageInfo:{pageNum,pageSize,q}<br>q是查询输入内容<br><br>cb:回调函数<br>参数对象中至少包含：total,data属性<br>例如：cb({total:10,data:['a','b','c']})
 size|组件大小设置|string|medium / small / mini  |medium
 disabled|禁用|boolean|-|false
+placeholder|文本框占位符|string|-|-
 icon-class|自定义按钮图标|string|element-ui图标库|el-icon-s-operation
 editable|是否可手工录入|boolean|-|true
 multiple|是否多选|boolean|-|true

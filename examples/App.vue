@@ -1,7 +1,7 @@
 <template>
 <div id="app">
     <div class="header">
-        smartdata-ui
+        smartdata-ui <span>v:{{version}}</span>
     </div>
     <div class="content">
         <div class="menu">
@@ -19,10 +19,12 @@
 </template>
 
 <script>
+import config from '../package.json'
 export default {
     name: "App",
     data() {
         return {
+            version: config.version,
             activeMenu: '',
             menuArr: [{
                 class: 'menu_title',
@@ -95,6 +97,14 @@ body {
         font-size: 28px;
         text-shadow: 0px 0px 17px #1f06f2;
         color: white;
+
+        &>span {
+            font-size: 12px;
+            color: #888888;
+            text-shadow: none;
+            margin-left: 10px;
+            font-style: italic;
+        }
     }
 
     .content {

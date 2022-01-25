@@ -2,7 +2,7 @@
   <div class="data_input_content">
     <!-- INPUT输入框 -->
     <el-input
-      placeholder="请输入内容"
+      :placeholder="placeholder"
       :value="value"
       style="with: 100%"
       :size="size"
@@ -93,6 +93,10 @@ export default {
     separator: {//链接分隔符
       type: String,
       default: null
+    },
+    placeholder: {
+      type: String,
+      default: ''
     },
     format: String, // 日期格式
   },

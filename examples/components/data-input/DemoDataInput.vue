@@ -7,16 +7,16 @@
         <span>medium</span>
         <sd-data-input :query-fn="searchFn" v-model="ipv"></sd-data-input>
         <span>small</span>
-        <sd-data-input :query-fn="searchFn" v-model="ipv" size="small"></sd-data-input>
+        <sd-data-input :query-fn="searchFn" v-model="ipv1" size="small"></sd-data-input>
         <span>mini</span>
-        <sd-data-input :query-fn="searchFn" v-model="ipv" size="mini"></sd-data-input>
+        <sd-data-input :query-fn="searchFn" v-model="ipv2" size="mini"></sd-data-input>
     </div>
     <div v-if="type=='disabled'">
         <sd-data-input :query-fn="searchFn" v-model="ipv" :disabled="true"></sd-data-input>
     </div>
     <div v-if="type=='icon'" class="column_grid_2">
-        <sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit" :multipleLimit="2"></sd-data-input>
-        <sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-share"></sd-data-input>
+        <sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit" :multipleLimit="2" placeholder="最多选择两项"></sd-data-input>
+        <sd-data-input :query-fn="searchFn" v-model="ipv1" icon-class="el-icon-share"></sd-data-input>
     </div>
     <div v-if="type=='simple'">
         <sd-data-input :query-fn="searchFn" v-model="ipv" :multiple="false" @input="test"></sd-data-input>
@@ -25,9 +25,9 @@
         <span>日期区间</span>
         <sd-data-input v-model="ipv" type="daterange" @input="test"></sd-data-input>
         <span>日期时间区间</span>
-        <sd-data-input v-model="ipv" type="datetimerange" @input="test"></sd-data-input>
+        <sd-data-input v-model="ipv2" type="datetimerange" @input="test"></sd-data-input>
         <span>日期时间</span>
-        <sd-data-input v-model="ipv" type="datetime" @input="test"></sd-data-input>
+        <sd-data-input v-model="ipv3" type="datetime" @input="test"></sd-data-input>
     </div>
 
 </div>
@@ -44,7 +44,10 @@ export default {
     },
     data() {
         return {
-            ipv: 'abc'
+            ipv: '',
+            ipv1: '',
+            ipv2: '',
+            ipv3: '',
         }
     },
 
