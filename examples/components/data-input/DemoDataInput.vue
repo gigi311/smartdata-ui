@@ -15,7 +15,7 @@
         <sd-data-input :query-fn="searchFn" v-model="ipv" :disabled="true"></sd-data-input>
     </div>
     <div v-if="type=='icon'" class="column_grid_2">
-        <sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit" :multipleLimit="2" placeholder="最多选择两项"></sd-data-input>
+        <sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit" :multiple-limit="2" placeholder="最多选择两项"></sd-data-input>
         <sd-data-input :query-fn="searchFn" v-model="ipv1" icon-class="el-icon-share"></sd-data-input>
     </div>
     <div v-if="type=='simple'">

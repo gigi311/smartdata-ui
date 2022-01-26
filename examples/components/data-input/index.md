@@ -85,7 +85,7 @@ export default {
 * 初始化方法
 
 ``` html
-<sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit" :multipleLimit="2"></sd-data-input>
+<sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit" :multiple-limit="2"></sd-data-input>
 <sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-share"></sd-data-input>
 ```
 </div>
@@ -133,7 +133,7 @@ placeholder|文本框占位符|string|-|-
 icon-class|自定义按钮图标|string|element-ui图标库|el-icon-s-operation
 editable|是否可手工录入|boolean|-|true
 multiple|是否多选|boolean|-|true
-multipleLimit|在允许多选时，配置可选择项数量，<br>0则不限制|number|-|0
+multiple-limit|在允许多选时，配置可选择项数量，<br>0则不限制|number|-|0
 separator|链接分隔符，针对多选，日期区间使用|string|-|列表默认逗号(,)<br>日期默认波浪(~)
 type|弹开窗口类型，主要涉及列表和日期|string|list/daterange/datetimerange/datetime|list
 format|日期格式|string|-|yyyy-MM-dd HH:mm:ss
