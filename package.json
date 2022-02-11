@@ -1,6 +1,6 @@
 {
   "name": "smartdata-ui",
-  "version": "0.2.65",
+  "version": "0.2.66",
   "private": false,
   "license": "MIT",
   "description": "基于Element-ui的业务组件库，欢迎学习使用。",

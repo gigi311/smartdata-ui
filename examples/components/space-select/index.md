@@ -122,12 +122,12 @@ export default {
 参数|说明|类型|可选|默认
 :---|:---|:---|:---|:---
 value|绑定的选中数据的值<br>使用sync后缀，可以自动在下拉选择后，同步修改值|-|-
-options|下拉项数组<br>(默认按对象内label属性作为展示,value属性作为值,<br>isDefault属性作为默认图标展示行)|Array|-|[]
-size|组件大小|String|medium / small / mini |medium
-label-prop|指定对象内显示字段属性名称|String|-|label
-value-prop|指定对象内值字段属性名称|String|-|value
-button-text|浮动按钮文字内容|String|-|设为默认
-default-text|默认选中行标记文字|String|-|默认
+options|下拉项数组<br>(默认按对象内label属性作为展示,value属性作为值,<br>isDefault属性作为默认图标展示行)|array|-|[]
+size|组件大小|string|medium / small / mini |medium
+label-prop|指定对象内显示字段属性名称|string|-|label
+value-prop|指定对象内值字段属性名称|string|-|value
+button-text|浮动按钮文字内容|string|-|设为默认
+default-text|默认选中行标记文字|string|-|默认
 
 
 

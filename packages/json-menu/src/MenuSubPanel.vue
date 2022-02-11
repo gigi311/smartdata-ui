@@ -12,6 +12,7 @@
       "
       :index="m.code"
       :data="m"
+      :disabled="m.access===false"
     >
       <template v-if="(m.children || []).length == 0">
         <i :class="m.iconClass"></i>

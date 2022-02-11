@@ -1,7 +1,8 @@
 <template>
 <div :class="parentCls">
     <el-menu :default-active="activeMenu" :class="className" :mode="mode" :collapse="collapseStatus" :unique-opened="true" :collapse-transition="false" :background-color="colorSet[0]" :text-color="colorSet[1]" :active-text-color="colorSet[2]" @select="menuSel">
-        <component v-for="(n,i) in menuList" :key="i" :is="n.children && n.children.length>0 ? 'menu-sub-panel':'el-menu-item'" :index="n.code" :data="n">
+        <component v-for="(n,i) in menuList" :key="i" :is="n.children && n.children.length>0 ? 'menu-sub-panel':'el-menu-item'" :index="n.code" :data="n" 
+      :disabled="n.access===false">
             <template v-if="(n.children || []).length==0">
                 <i :class="n.iconClass || 'el-icon-s-operation'"></i>
                 <span slot="title">{{n.name}}</span>

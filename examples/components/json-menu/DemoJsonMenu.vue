@@ -33,9 +33,8 @@ export default {
                         "code": "menu2_1",
                         "name": "子菜单一",
                         "url": "/#/interface/cockpitaview",
-                        "access": true,
+                        "access": false,
                         "iconClass": "el-icon-receiving",
-                        "type": "1"
                     }, {
                         "code": "menu2_2",
                         "name": "子菜单二",
@@ -49,7 +48,6 @@ export default {
                             "url": "/#/interface/cockpitaview",
                             "access": true,
                             "iconClass": "el-icon-receiving",
-                            "type": "1"
                         }]
                     }],
                     "iconClass": "el-icon-tickets",

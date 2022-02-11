@@ -1,5 +1,5 @@
 <template>
-<el-dialog :title="title" :visible.sync="dialogVisible" :width="width" :before-close="handleClose" :modal-append-to-body="false" class="data_dialog" :close-on-click-modal="false">
+<el-dialog :title="title" :visible.sync="dialogVisible" :width="winWidth || width" :before-close="handleClose" :modal-append-to-body="false" class="data_dialog" :close-on-click-modal="false">
     <div class="date_picker_body">
         <date-range-panel v-if="type.includes('range')" ref="date-range" @pick-click="clickVals" :show-type="type"></date-range-panel>
         <date-panel v-else ref="time-date" @pick-click="clickVals"></date-panel>
@@ -15,8 +15,8 @@
 import {
     formatDate
 } from 'element-ui/src/utils/date-util';
-import DateRangePanel from "./daterange/DateRangePanel";
-import DatePanel from './date/DatePanel.vue'
+import DateRangePanel from "./datatime/daterange/DateRangePanel";
+import DatePanel from './datatime/date/DatePanel.vue'
 export default {
     components: {
         DateRangePanel,
@@ -34,6 +34,10 @@ export default {
         type: {
             type: String,
             default: "daterange", // daterange/datetimerange/datetime
+        },
+        winWidth: {//打开窗口宽度
+            type: String,
+            default: null,
         },
         multiple: Boolean,
         separator: String, //链接分隔符

@@ -1,5 +1,5 @@
 <template>
-<el-dialog :title="title" :visible.sync="dialogVisible" :width="width" :before-close="handleClose" :modal-append-to-body="false" class="data_dialog" :close-on-click-modal="false">
+<el-dialog :title="title" :visible.sync="dialogVisible" :width="winWidth || width" :before-close="handleClose" :modal-append-to-body="false" class="data_dialog" :close-on-click-modal="false">
     <div class="input_picker_body" :style="`grid-template-columns: 1fr ${multiple ? '1fr' : ''}`">
         <!-- 待选卡片 -->
         <el-card class="box-card" shadow="never">
@@ -69,6 +69,10 @@ export default {
         queryFn: {
             type: Function,
             default: ()=>{}
+        },
+        winWidth: {//打开窗口宽度
+            type: String,
+            default: null,
         },
         multiple:Boolean,
         multipleLimit:Number,

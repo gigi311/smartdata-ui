@@ -27,7 +27,7 @@
         <span>日期时间区间</span>
         <sd-data-input v-model="ipv2" type="datetimerange" @input="test"></sd-data-input>
         <span>日期时间</span>
-        <sd-data-input v-model="ipv3" type="datetime" @input="test"></sd-data-input>
+        <sd-data-input v-model="ipv3" type="datetime" @input="test" win-width="600px"></sd-data-input>
     </div>
 
 </div>

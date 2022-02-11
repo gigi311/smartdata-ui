@@ -29,6 +29,7 @@
       :multiple="multiple"
       :multipleLimit="multipleLimit"
       :separator="separator"
+      :winWidth="winWidth"
       @submit="saveInputs"
     ></data-picker-win>
     <!-- 打开日期选择窗口 待开发支持单日期/区间日期/单时间日期/区间时间日期-->
@@ -38,6 +39,7 @@
       :type="type"
       :format="format"
       :separator="separator"
+      :winWidth="winWidth"
       @submit="saveInputs"
     ></date-picker-win>
   </div>
@@ -45,7 +47,7 @@
 
 <script>
 import DataPickerWin from "./DataPickerWin";
-import DatePickerWin from "./datatime/DatePickerWin";
+import DatePickerWin from "./DatePickerWin";
 export default {
   name: "SdDataInput",
   components: {
@@ -97,6 +99,10 @@ export default {
     placeholder: {
       type: String,
       default: ''
+    },
+    winWidth: {//打开窗口宽度
+      type: String,
+      default: null,
     },
     format: String, // 日期格式
   },

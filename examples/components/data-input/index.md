@@ -116,7 +116,7 @@ export default {
 <!-- 日期时间区间 -->
 <sd-data-input v-model="ipv" type="datetimerange" @input="test"></sd-data-input>
 <!-- 日期时间 -->
-<sd-data-input v-model="ipv" type="datetime" @input="test"></sd-data-input>
+<sd-data-input v-model="ipv" type="datetime" win-width="600px" @input="test"></sd-data-input>
 ```
 </div>
 
@@ -137,6 +137,7 @@ multiple-limit|在允许多选时，配置可选择项数量，<br>0则不限制
 separator|链接分隔符，针对多选，日期区间使用|string|-|列表默认逗号(,)<br>日期默认波浪(~)
 type|弹开窗口类型，主要涉及列表和日期|string|list/daterange/datetimerange/datetime|list
 format|日期格式|string|-|yyyy-MM-dd HH:mm:ss
+win-width|弹开窗口宽度，支持像素和百分比|string|300px或者50%格式|null
 
 
 
