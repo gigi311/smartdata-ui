@@ -21,6 +21,9 @@ const router = new Router({
     },{
         path: '/comps/data-input',
         component: resolve => require(['../components/data-input/index.md'], resolve)
+    },{
+        path: '/comps/relation-input',
+        component: resolve => require(['../components/relation-input/index.md'], resolve)
     },]
 });
 

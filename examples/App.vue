@@ -52,6 +52,9 @@ export default {
             }, {
                 text: 'DataInput 输入框组件',
                 path: '/comps/data-input'
+            }, {
+                text: 'RelationInput 关联组件',
+                path: '/comps/relation-input'
             }],
         }
     },
