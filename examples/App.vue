@@ -55,6 +55,9 @@ export default {
             }, {
                 text: 'RelationInput 关联组件',
                 path: '/comps/relation-input'
+            }, {
+                text: 'RelationInputGroup 关联组件组',
+                path: '/comps/relation-input-group'
             }],
         }
     },

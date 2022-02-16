@@ -21,8 +21,8 @@
     </slot>
     <!-- 按钮部分 -->
     <slot name="tools" v-bind:busid="busid">
-        <i v-if="showRemove" class="tools el-icon-remove-outline" @click="$emit('remove',busid)"></i>
-        <i v-if="showAdd" class="tools el-icon-circle-plus-outline" @click="$emit('add')"></i>
+        <i :style="`visibility: ${showRemove?'visible':'hidden'}`" class="tools el-icon-remove-outline" @click="$emit('remove',busid)"></i>
+        <i :style="`visibility: ${showAdd?'visible':'hidden'}`" class="tools el-icon-circle-plus-outline" @click="$emit('add')"></i>
     </slot>
 </div>
 </template>
@@ -112,11 +112,8 @@ export default {
                 r.push(c + 'fr');
                 return r;
             }, []);
-            let buttons = this.showRemove ? ' 30px' : ' ';
-            buttons += this.showAdd ? ' 30px' : ' ';
-
             return {
-                'grid-template-columns': cols.join(' ') + buttons,
+                'grid-template-columns': cols.join(' ') + ' 30px 30px',
                 'column-gap': `${this.gap}px`
             }
         },
