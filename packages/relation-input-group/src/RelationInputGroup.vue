@@ -1,7 +1,14 @@
 <template>
 <div class="relation_input_group_content" :style="style">
     <template v-for="(row, idx) in rows">
-        <sd-relation-input :key="idx" v-model="row.val" :left-data="[]" :mid-data="[]" :right-data="[]" :show-add="idx==rows.length-1" @add="addRow" @remove="removeRow(idx)"></sd-relation-input>
+        <sd-relation-input :key="idx" v-model="row.val" :left-data="leftData" :mid-data="midData" :right-data="rightData" :show-add="idx==rows.length-1" @add="addRow" @remove="removeRow(idx)" :oneDataShowText="oneDataShowText" :size="size" :gap="gap">
+            <template #tools="{scope}">
+                <slot name="tools" :rowscope="scope" :scope="self" :idx="idx"></slot>
+            </template>
+            <template #right="{scope}">
+                <slot name="right" :rowscope="scope" :scope="self" :idx="idx"></slot>
+            </template>
+        </sd-relation-input>
     </template>
 
 </div>
@@ -24,13 +31,77 @@ export default {
         rowLimit: {
             type: Number,
             default: 1
-        }
+        },
+        //------------ 下面为relation-input组件属性 -------------
+        //列占比，支持3个数据
+        columns: {
+            type: Array,
+            default: ()=>Array(4, 2, 4)
+        },
+        //间隙
+        gap: {
+            type: Number,
+            default: 10
+        },
+        size: {
+            type: String,
+            default: 'medium'
+        },
+        leftData: {
+            type: Array,
+            default: Array
+        },
+        midData: {
+            type: Array,
+            default: Array
+        },
+        rightData: {
+            type: Array,
+            default: Array
+        },
+        //如果只有一个选项，则展示为TEXT文本样式
+        oneDataShowText: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
         return {
             val1: '',
             rows: [],
+            self: this,
+        }
+    },
+
+    mounted() {
+        if (this.value.length == 0) {
+            this.rows.push({
+                val: {
+                    left: '',
+                    mid: '',
+                    right: '',
+                }
+            })
+        } else {
+            this.value.forEach(n => {
+                this.rows.push({
+                    val: n
+                });
+            });
+        }
+
+        // 如果现有行数小于rowLimit，则补齐空行
+        if(this.rows.length < this.rowLimit) {
+            new Array(this.rowLimit - this.rows.length).fill(1).forEach(()=>{
+                this.rows.push({
+                    val: {
+                        left: '',
+                        mid: '',
+                        right: '',
+                    }
+                })
+            });
         }
     },
 
@@ -70,25 +141,18 @@ export default {
     },
 
     watch: {
-        value: {
-            handler: function () {
-                if (this.value.length == 0) {
-                    this.rows.push({
-                        val: {
-                            left: '',
-                            mid: '',
-                            right: '',
-                        }
-                    })
-                } else {
-                    this.value.forEach(n => {
-                        this.rows.push({
-                            val: n
-                        });
-                    });
-                }
+        rows: {
+            handler: function (val) {
+                // 将val层去掉
+                const r = [];
+                (val || []).forEach(n => {
+                 const {left, mid, right} = n.val || {};   
+                 left && mid && right&& (r.push(n.val));
+                })
+                // 触发更新
+                this.$emit("input", r);
             },
-            immediate: true
+            deep: true
         }
     }
 

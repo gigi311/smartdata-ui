@@ -1,26 +1,28 @@
 <template>
 <div class="relationinput_div_content" :style="style">
     <!-- 关联下拉部分 -->
-    <slot name="left">
+    <slot name="left" :scope="this">
         <el-select v-model="valueLeft" class="select_style" :size="size" @change="changeVal">
             <el-option v-for="{label,value} in leftData" :key="value" :label="label" :value="value"></el-option>
         </el-select>
     </slot>
-    <slot name="left">
-        <span v-if="oneDataShowText && midData.length==1">
-            {{midData[0].label}}
-        </span>
+    <slot name="mid" :scope="this">
+        <div v-if="oneDataShowText && midData.length==1">
+            <span>
+                {{midData[0].label}}
+            </span>
+        </div>
         <el-select v-else v-model="valRelation" class="select_style" :size="size" @change="changeVal">
             <el-option v-for="{label,value} in midData" :key="value" :label="label" :value="value"></el-option>
         </el-select>
     </slot>
-    <slot name="right">
+    <slot name="right" :scope="this">
         <el-select v-model="valRight" class="select_style" :size="size" @change="changeVal">
             <el-option v-for="{label,value} in rightData" :key="value" :label="label" :value="value"></el-option>
         </el-select>
     </slot>
     <!-- 按钮部分 -->
-    <slot name="tools" v-bind:busid="busid">
+    <slot name="tools" :scope="this">
         <i :style="`visibility: ${showRemove?'visible':'hidden'}`" class="tools el-icon-remove-outline" @click="$emit('remove',busid)"></i>
         <i :style="`visibility: ${showAdd?'visible':'hidden'}`" class="tools el-icon-circle-plus-outline" @click="$emit('add')"></i>
     </slot>

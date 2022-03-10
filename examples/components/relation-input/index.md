@@ -102,7 +102,7 @@ export default {
 ```
 </div>
 
-### 自定义工具
+### 自定义组件内容
 <div class="code_div">
 <demo-relation-input demo="3"></demo-relation-input>
 
@@ -111,8 +111,8 @@ export default {
 
 ``` html
 <sd-relation-input v-model="val1" :left-data="leftData" :mid-data="midData" :right-data="rightData">
-    <template v-slot:tools="slotProps">
-        <el-button type="text" @click="clickRemove(slotProps.busid)">哈哈</el-button>
+    <template #tools="{scope}">
+        <el-button type="text" @click="clickRemove(scope.busid)">哈哈</el-button>
     </template>
 </sd-relation-input>
 ```
@@ -152,8 +152,8 @@ export default {
     }
 }
 ```
-
 </div>
+
 
 ### Attributes
 参数|说明|类型|可选|默认
@@ -180,4 +180,7 @@ add |在点击新增按钮时时触发|-
 ### Slots
 name|说明
 :---|:---
-tools|按钮显示部分内容自定义，通过形参slotProps（可自行修改名称）获取数据进行处理，目前只支持busid属性获取
+tools|按钮显示部分内容自定义，通过形参{scope}解构的方式，获取组件内部作用域，可以获取组件内各种属性和方法<br><br>变量：valueLeft:左侧、valRelation:中间、valRight:右侧<br>方法：changeVal:重组value方法
+right|使用方法，同上
+
+##### <font color="#DEB887">注意： 使用插槽后，内部组件大小需要自己控制。无法通过配置size属性进行大小修改</font>
