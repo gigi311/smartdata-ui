@@ -27,6 +27,9 @@ const router = new Router({
     },{
         path: '/comps/relation-input-group',
         component: resolve => require(['../components/relation-input-group/index.md'], resolve)
+    },{
+        path: '/comps/back-to-top',
+        component: resolve => require(['../components/back-to-top/index.md'], resolve)
     }]
 });
 
