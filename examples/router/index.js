@@ -30,6 +30,9 @@ const router = new Router({
     },{
         path: '/comps/back-to-top',
         component: resolve => require(['../components/back-to-top/index.md'], resolve)
+    },{
+        path: '/comps/scroll-view',
+        component: resolve => require(['../components/scroll-view/index.md'], resolve)
     }]
 });
 

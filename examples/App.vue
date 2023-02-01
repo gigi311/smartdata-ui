@@ -61,6 +61,9 @@ export default {
             }, {
                 text: 'BackToTop 返回顶部',
                 path: '/comps/back-to-top'
+            }, {
+                text: 'ScrollView 滚动容器',
+                path: '/comps/scroll-view'
             }],
         }
     },

@@ -10,10 +10,12 @@ import SpaceSelect from './space-select'
 import DataInput from './data-input'
 import RelationInput from './relation-input'
 import RelationInputGroup from './relation-input-group';
-import BackToTop from './back-to-top/src/BackToTop';
+import BackToTop from './back-to-top';
+import ScrollView from './scroll-view';
+
  
 // 存储组件列表
-const components = [HistoryList, JsonMenu, SpaceSelect, DataInput, RelationInput, RelationInputGroup, BackToTop];
+const components = [HistoryList, JsonMenu, SpaceSelect, DataInput, RelationInput, RelationInputGroup, BackToTop, ScrollView];
 // 定义 install 方法，接收 Vue 作为参数。如果使用 use 注册插件，则所有的组件都将被注册
 const install = function(Vue) {
     Vue.use(ElementUI);
