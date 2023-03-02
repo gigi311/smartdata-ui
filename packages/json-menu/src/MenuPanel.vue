@@ -1,35 +1,53 @@
 <template>
-<div :class="parentCls">
-    <el-menu :default-active="activeMenu" :class="className" :mode="mode" :collapse="collapseStatus" :unique-opened="true" :collapse-transition="false" :background-color="colorSet[0]" :text-color="colorSet[1]" :active-text-color="colorSet[2]" @select="menuSel">
-        <component v-for="(n,i) in menuList" :key="i" :is="n.children && n.children.length>0 ? 'menu-sub-panel':'el-menu-item'" :index="n.code" :data="n" 
-      :disabled="n.access===false">
-            <template v-if="(n.children || []).length==0">
-                <i :class="n.iconClass || 'el-icon-s-operation'"></i>
-                <span slot="title">{{n.name}}</span>
-            </template>
-        </component>
-    </el-menu>
-    <div v-if="pos == 'left' && showCollapse===true" class="toggle-button" @click="_openCloseFn" :style="arrowStyle">
-        <i class="el-icon-arrow-left" v-show="!collapsed"></i>
-        <i class="el-icon-arrow-right" v-show="collapsed"></i>
+    <div :class="parentCls">
+        <el-menu
+            :default-active="activeMenu"
+            :class="className"
+            :mode="mode"
+            :collapse="collapseStatus"
+            :collapse-transition="false"
+            :background-color="colorSet[0]"
+            :text-color="colorSet[1]"
+            :active-text-color="colorSet[2]"
+            :unique-opened="!(uniqueOpened===false)"
+            @select="menuSel"
+        >
+            <component
+                v-for="(n, i) in menuList"
+                :key="i"
+                :is="n.children && n.children.length > 0 ? 'menu-sub-panel' : 'el-menu-item'"
+                :index="n.code"
+                :data="n"
+                :disabled="n.access === false"
+            >
+                <template v-if="(n.children || []).length == 0">
+                    <i :class="n.iconClass || 'el-icon-s-operation'"></i>
+                    <span slot="title">{{ n.name }}</span>
+                </template>
+            </component>
+        </el-menu>
+        <div v-if="pos == 'left' && showCollapse === true" class="toggle-button" @click="_openCloseFn" :style="arrowStyle">
+            <i class="el-icon-arrow-left" v-show="!collapsed"></i>
+            <i class="el-icon-arrow-right" v-show="collapsed"></i>
+        </div>
     </div>
-</div>
 </template>
 
 <script>
-import MenuSubPanel from './MenuSubPanel.vue';
+import MenuSubPanel from "./MenuSubPanel.vue";
 export default {
-    name: 'SdJsonMenu',
+    name: "SdJsonMenu",
     components: {
-        MenuSubPanel
+        MenuSubPanel,
     },
     props: [
-        "activeMenu" /**当前选中菜单 */ ,
-        "pos" /**菜单方式top为横向left为纵向 */ ,
-        "collapse" /**是否可收缩 */ ,
-        "menuList" /**菜单数据 */ ,
-        "colors" /**颜色数组： background-color  text-color  active-text-color*/ ,
-        "showCollapse" /**是否显示收缩展开按钮 */ ,
+        "activeMenu" /**当前选中菜单 */,
+        "pos" /**菜单方式top为横向left为纵向 */,
+        "collapse" /**是否可收缩 */,
+        "menuList" /**菜单数据 */,
+        "colors" /**颜色数组： background-color  text-color  active-text-color*/,
+        "showCollapse" /**是否显示收缩展开按钮 */,
+        "uniqueOpened" /**是否只保留一个展开菜单 */,
     ],
     created() {
         //处理样式
@@ -39,8 +57,8 @@ export default {
             this.mode = "vertical";
         }
         //处理颜色
-        if(Array.isArray(this.colors) && this.colors.length<=3){
-            this.colors.forEach((n,i)=>this.colorSet[i] = n);
+        if (Array.isArray(this.colors) && this.colors.length <= 3) {
+            this.colors.forEach((n, i) => (this.colorSet[i] = n));
         }
     },
     data() {
@@ -49,14 +67,13 @@ export default {
             className: "top-menu",
             mode: "horizontal",
             collapsed: false,
-            colorSet: ['','','']
+            colorSet: ["", "", ""],
         };
     },
     methods: {
         menuSel(code) {
             const menu = this._filterMenuByCode(this.menuList, code);
-            this.$emit('select', code, menu);
-
+            this.$emit("select", code, menu);
         },
         //递归找寻选中的菜单对象
         _filterMenuByCode(list, code) {
@@ -73,8 +90,8 @@ export default {
         },
         _openCloseFn() {
             this.collapsed = !this.collapsed;
-            this.$emit('menu-collapse', this.collapsed);
-        }
+            this.$emit("menu-collapse", this.collapsed);
+        },
     },
     computed: {
         collapseStatus() {
@@ -86,8 +103,8 @@ export default {
             return {
                 backgroundColor: self.colorSet[0],
                 color: self.colorSet[1],
-            }
-        }
+            };
+        },
     },
 };
 </script>
@@ -107,7 +124,7 @@ export default {
     }
 
     .left_aside {
-        transition: .5s ease all;
+        transition: 0.5s ease all;
     }
 
     .left-menu {
@@ -118,7 +135,7 @@ export default {
     }
 
     .toggle-button {
-        transition: .5s ease all;
+        transition: 0.5s ease all;
         width: 100%;
         background-color: white;
         height: 50px;
@@ -128,6 +145,5 @@ export default {
         cursor: pointer;
         text-align: center;
     }
-
 }
 </style>
