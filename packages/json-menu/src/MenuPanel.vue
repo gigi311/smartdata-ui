@@ -9,7 +9,7 @@
             :background-color="colorSet[0]"
             :text-color="colorSet[1]"
             :active-text-color="colorSet[2]"
-            :unique-opened="!(uniqueOpened===false)"
+            :unique-opened="uniqueOpened"
             @select="menuSel"
         >
             <component
@@ -60,6 +60,9 @@ export default {
         if (Array.isArray(this.colors) && this.colors.length <= 3) {
             this.colors.forEach((n, i) => (this.colorSet[i] = n));
         }
+    },
+    mounted() {
+        console.log(11111, this.$attrs);
     },
     data() {
         return {
