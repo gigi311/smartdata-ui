@@ -55,6 +55,15 @@ export default {
             }, {
                 text: 'RelationInput 关联组件',
                 path: '/comps/relation-input'
+            }, {
+                text: 'RelationInputGroup 关联组件组',
+                path: '/comps/relation-input-group'
+            }, {
+                text: 'BackToTop 返回顶部',
+                path: '/comps/back-to-top'
+            }, {
+                text: 'ScrollView 滚动容器',
+                path: '/comps/scroll-view'
             }],
         }
     },

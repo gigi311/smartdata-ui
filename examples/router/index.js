@@ -24,7 +24,16 @@ const router = new Router({
     },{
         path: '/comps/relation-input',
         component: resolve => require(['../components/relation-input/index.md'], resolve)
-    },]
+    },{
+        path: '/comps/relation-input-group',
+        component: resolve => require(['../components/relation-input-group/index.md'], resolve)
+    },{
+        path: '/comps/back-to-top',
+        component: resolve => require(['../components/back-to-top/index.md'], resolve)
+    },{
+        path: '/comps/scroll-view',
+        component: resolve => require(['../components/scroll-view/index.md'], resolve)
+    }]
 });
 
 export default router;

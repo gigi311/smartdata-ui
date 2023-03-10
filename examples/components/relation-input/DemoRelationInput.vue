@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="demo_relationinput">
     <div v-if="demo=='1'">
         <sd-relation-input v-model="val1" :left-data="leftData" :mid-data="midData" :right-data="rightData" @remove="clickRemove" @add="clickAdd"></sd-relation-input>
         <div style="margin-top:25px;">val1值为：{{JSON.stringify(val1)}}</div>
@@ -12,12 +12,38 @@
         <span>mini</span>
         <sd-relation-input v-model="val4" :left-data="leftData" :mid-data="midData" :right-data="rightData" size="mini"></sd-relation-input>
     </div>
-    <div v-if="demo=='3'">
+    <div v-if="demo=='3'" class="column_grid">
+        <span>属性自定义</span>
         <sd-relation-input v-model="val1" :left-data="leftData" :mid-data="midData" :right-data="rightData">
-            <template v-slot:tools="slotProps">
-                <el-button type="text" @click="clickRemove(slotProps.busid)">哈哈</el-button>
+            <template #left="{scope}">
+                <el-input v-model="scope.valLeft" size="medium" @change="scope.changeVal"></el-input>
             </template>
         </sd-relation-input>
+        <span>值自定义1</span>
+        <sd-relation-input v-model="val1" :left-data="leftData" :mid-data="midData" :right-data="rightData" @remove="clickRemove" @add="clickAdd">
+            <template #right="{scope}">
+                <sd-data-input v-model="scope.valRight" type="daterange" @input="scope.changeVal"></sd-data-input>
+            </template>
+        </sd-relation-input>
+        <span>值自定义2</span>
+        <sd-relation-input v-model="val1" :left-data="leftData" :mid-data="midData" :right-data="rightData" @remove="clickRemove" @add="clickAdd">
+            <template #right="{scope}">
+                <el-radio-group v-model="scope.valRight" @change="scope.changeVal">
+                    <el-radio :label="3">备选项</el-radio>
+                    <el-radio :label="6">备选项</el-radio>
+                    <el-radio :label="9">备选项</el-radio>
+                </el-radio-group>
+            </template>
+        </sd-relation-input>
+        <span>按钮自定义</span>
+        <sd-relation-input v-model="val1" :left-data="leftData" :mid-data="midData" :right-data="rightData">
+            <template #tools="{scope}">
+                <el-button type="text" @click="clickRemove(scope.busid)">哈哈</el-button>
+            </template>
+        </sd-relation-input>
+    </div>
+    <div v-if="demo=='4'">
+
     </div>
 
 </div>
@@ -45,6 +71,7 @@ export default {
                 label: '字段A',
                 value: 'col_a'
             }],
+            ipv: '',
         }
     },
     methods: {
@@ -72,6 +99,9 @@ export default {
         grid-row-gap: 10px;
         grid-template-columns: 100px auto;
         align-items: center;
+        span {
+            font-size: 14px;
+        }
     }
 
 }
