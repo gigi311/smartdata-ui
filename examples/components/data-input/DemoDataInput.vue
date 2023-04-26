@@ -1,70 +1,80 @@
 <template>
-<div class="demo_datainput">
-    <div v-if="type=='init'">
-        <sd-data-input :query-fn="searchFn" v-model="ipv"></sd-data-input>
+    <div class="demo_datainput">
+        <div v-if="type == 'init'">
+            <sd-data-input :query-fn="searchFn" v-model="ipv"></sd-data-input>
+        </div>
+        <div v-if="type == 'size'" class="column_grid">
+            <span>medium</span>
+            <sd-data-input :query-fn="searchFn" v-model="ipv"></sd-data-input>
+            <span>small</span>
+            <sd-data-input :query-fn="searchFn" v-model="ipv1" size="small"></sd-data-input>
+            <span>mini</span>
+            <sd-data-input :query-fn="searchFn" v-model="ipv2" size="mini"></sd-data-input>
+        </div>
+        <div v-if="type == 'disabled'">
+            <sd-data-input :query-fn="searchFn" v-model="ipv" :disabled="true"></sd-data-input>
+        </div>
+        <div v-if="type == 'icon'" class="column_grid_2">
+            <sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit" :multiple-limit="2" placeholder="最多选择两项"></sd-data-input>
+            <sd-data-input :query-fn="searchFn" v-model="ipv1" icon-class="el-icon-share"></sd-data-input>
+        </div>
+        <div v-if="type == 'simple'">
+            <sd-data-input :query-fn="searchFn" v-model="ipv" :multiple="false" @input="test"></sd-data-input>
+        </div>
+        <div v-if="type == 'daterange'" class="column_grid">
+            <span>日期区间</span>
+            <sd-data-input v-model="ipv" type="daterange" @input="test"></sd-data-input>
+            <span>日期时间区间</span>
+            <sd-data-input v-model="ipv2" type="datetimerange" @input="test"></sd-data-input>
+            <span>日期时间</span>
+            <sd-data-input v-model="ipv3" type="datetime" @input="test" win-width="600px"></sd-data-input>
+        </div>
+        <div v-if="type == 'win'">
+            <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+            <el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+                <span>这是一级打开页面</span>
+                <sd-data-input :query-fn="searchFn" v-model="ipv"></sd-data-input>
+            </el-dialog>
+        </div>
     </div>
-    <div v-if="type=='size'" class="column_grid">
-        <span>medium</span>
-        <sd-data-input :query-fn="searchFn" v-model="ipv"></sd-data-input>
-        <span>small</span>
-        <sd-data-input :query-fn="searchFn" v-model="ipv1" size="small"></sd-data-input>
-        <span>mini</span>
-        <sd-data-input :query-fn="searchFn" v-model="ipv2" size="mini"></sd-data-input>
-    </div>
-    <div v-if="type=='disabled'">
-        <sd-data-input :query-fn="searchFn" v-model="ipv" :disabled="true"></sd-data-input>
-    </div>
-    <div v-if="type=='icon'" class="column_grid_2">
-        <sd-data-input :query-fn="searchFn" v-model="ipv" icon-class="el-icon-edit" :multiple-limit="2" placeholder="最多选择两项"></sd-data-input>
-        <sd-data-input :query-fn="searchFn" v-model="ipv1" icon-class="el-icon-share"></sd-data-input>
-    </div>
-    <div v-if="type=='simple'">
-        <sd-data-input :query-fn="searchFn" v-model="ipv" :multiple="false" @input="test"></sd-data-input>
-    </div>
-    <div v-if="type=='daterange'" class="column_grid">
-        <span>日期区间</span>
-        <sd-data-input v-model="ipv" type="daterange" @input="test"></sd-data-input>
-        <span>日期时间区间</span>
-        <sd-data-input v-model="ipv2" type="datetimerange" @input="test"></sd-data-input>
-        <span>日期时间</span>
-        <sd-data-input v-model="ipv3" type="datetime" @input="test" win-width="600px"></sd-data-input>
-    </div>
-
-</div>
 </template>
 
 <script>
 export default {
-    name: 'DemoDataInput',
+    name: "DemoDataInput",
     props: {
         type: {
             type: String,
-            default: 'init'
-        }
+            default: "init",
+        },
     },
     data() {
         return {
-            ipv: '',
-            ipv1: '',
-            ipv2: '',
-            ipv3: '',
-        }
+            ipv: "",
+            ipv1: "",
+            ipv2: "",
+            ipv3: "",
+            dialogVisible: false,
+        };
     },
 
     methods: {
         searchFn(pageInfo, cb) {
-            setTimeout(() => cb({
-                total: 100,
-                data: [1, 2, 3]
-            }), 1000);
+            setTimeout(
+                () =>
+                    cb({
+                        total: 100,
+                        data: [1, 2, 3],
+                    }),
+                1000
+            );
         },
 
-        test(event){
+        test(event) {
             console.log(111, event);
-        }
-    }
-
-}
+        },
+    },
+};
 </script>
 
 <style lang="less" scoped>
@@ -80,8 +90,6 @@ export default {
         grid-row-gap: 10px;
         grid-column-gap: 10px;
         grid-template-columns: repeat(auto-fill, 200px);
-
     }
-
 }
 </style>

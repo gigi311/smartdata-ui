@@ -30,6 +30,7 @@
       :multipleLimit="multipleLimit"
       :separator="separator"
       :winWidth="winWidth"
+      :append-to-body="appendToBody"
       @submit="saveInputs"
     ></data-picker-win>
     <!-- 打开日期选择窗口 待开发支持单日期/区间日期/单时间日期/区间时间日期-->
@@ -40,6 +41,7 @@
       :format="format"
       :separator="separator"
       :winWidth="winWidth"
+      :append-to-body="appendToBody"
       @submit="saveInputs"
     ></date-picker-win>
   </div>
@@ -87,6 +89,10 @@ export default {
     multipleLimit: {
       type: Number,
       default: 0,
+    },
+    appendToBody: {
+        type: Boolean,
+        default: true,
     },
     type: {
       type: String,

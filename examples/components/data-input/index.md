@@ -121,6 +121,22 @@ export default {
 </div>
 
 
+### 弹框嵌套(append-to-body默认为true，防止模态层遮挡问题)
+<div class="code_div">
+<demo-data-input type="win"></demo-data-input>
+
+---
+* 初始化方法
+
+``` html
+<el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+<el-dialog title="提示" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+    <span>这是一级打开页面</span>
+    <sd-data-input :query-fn="searchFn" v-model="ipv"></sd-data-input>
+</el-dialog>
+```
+</div>
+
 
 ### Attributes
 参数|说明|类型|可选|默认
@@ -138,7 +154,7 @@ separator|链接分隔符，针对多选，日期区间使用|string|-|列表默
 type|弹开窗口类型，主要涉及列表和日期|string|list/daterange/datetimerange/datetime|list
 format|日期格式|string|-|yyyy-MM-dd HH:mm:ss
 win-width|弹开窗口宽度，支持像素和百分比|string|300px或者50%格式|null
-
+append-to-body|Dialog 自身是否插入至 body 元素上。嵌套的 Dialog 必须指定该属性并赋值为 true|boolean|-|true
 
 
 ### Event
