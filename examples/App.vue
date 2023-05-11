@@ -64,6 +64,13 @@ export default {
             }, {
                 text: 'ScrollView 滚动容器',
                 path: '/comps/scroll-view'
+            }, {
+                class: 'menu_title',
+                text: '指令',
+                path: ''
+            }, {
+                text: 'v-keywords',
+                path: '/comps/v-keywords'
             }],
         }
     },

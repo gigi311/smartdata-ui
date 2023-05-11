@@ -11,6 +11,8 @@ import sd from '../packages/index';
 // 注册组件库
 Vue.use(sd)
 
+import '../packages/directive/keywords';
+
 
 //引入所有演示组件
 const path = require("path");

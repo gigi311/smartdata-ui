@@ -33,6 +33,9 @@ const router = new Router({
     },{
         path: '/comps/scroll-view',
         component: resolve => require(['../components/scroll-view/index.md'], resolve)
+    },{
+        path: '/comps/v-keywords',
+        component: resolve => require(['../components/v-keywords/index.md'], resolve)
     }]
 });
 

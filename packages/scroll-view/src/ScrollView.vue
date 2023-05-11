@@ -72,6 +72,7 @@ export default {
         currentOffset > containerSize ? currentOffset - containerSize : 0;
 
       this.navOffset = newOffset;
+      this.update();
     },
     scrollNext() {
       const navSize = this.$refs.nav.offsetWidth;
@@ -86,6 +87,7 @@ export default {
           : navSize - containerSize;
 
       this.navOffset = newOffset;
+      this.update();
     },
     scrollToActiveTab(isInitial) {
       this.update();
@@ -119,8 +121,6 @@ export default {
       newOffset = Math.max(newOffset, 0);
 
       this.navOffset = Math.min(newOffset, maxOffset);
-      console.log('offset1',nav.offsetWidth, navScrollBounding.width)
-      console.log('offset2',newOffset, maxOffset)
     },
     update() {
       if (!this.$refs.nav) return;
