@@ -56,6 +56,27 @@ metheds:{
 
 </div>
 
+
+### 插槽支持
+<div class="code_div">
+<demo-history-list :flag="2"></demo-history-list>
+
+``` html
+<sd-history-list ref="his3" :showType="2" @load-history="fn">
+    <template v-slot:left-icon>
+        <i class="el-icon-caret-left"></i>
+    </template>
+    <template v-slot:right-icon>
+        <i class="el-icon-caret-right"></i>
+    </template>
+</sd-history-list>
+```
+---
+灌数据的方法参考前面。
+
+</div>
+
+
 ### Attributes
 参数|说明|类型|可选|默认
 :---|:---|:---|:---|:---
@@ -76,3 +97,9 @@ load-history|在下拉菜单中点击某一历史记录或点击前进、后退�
 :---|:---|:---
 setHistory|向组件添加一条记录。name:列表显示名称;elements:存储对象;icon:可选的图标class，支持element-ui的所有icon图表类|(name, elements, icon = '')
 clearAll|清除组件中的所有历史记录数据。|无
+
+### Slots
+name|说明
+:---|:---
+left-icon|左侧按钮图标插槽
+right-icon|右侧按钮图标插槽

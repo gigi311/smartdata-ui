@@ -1,7 +1,7 @@
 <template>
     <div class="demo_scroll_view_content">
         <div v-if="type===1">
-            <sd-scroll-view :width="menuWidth">
+            <sd-scroll-view :width="menuWidth" @transform-change="showChange">
                 <el-tag v-for="item in tags" :key="item" type="info">
                     {{ item }}
                 </el-tag>
@@ -22,6 +22,11 @@ export default {
             tags: [1, 2, 3, 4, 5],
         };
     },
+    methods: {
+        showChange(trans) {
+            console.log("new transform", trans);
+        }
+    }
 };
 </script>
 

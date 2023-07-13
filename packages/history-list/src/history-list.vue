@@ -11,13 +11,18 @@
     <div v-if="showType==2" class="history_list_buttons">
         <el-button-group>
             <el-button round :size="buttonSize" type="primary" :disabled="curPoint<1" @click="gotoHistory(curPoint-1)">
-                <svg class="icon" aria-hidden="true" style="font-size: 12px;">
-                    <use xlink:href="#sdicon-undo"></use>
-                </svg></el-button>
+                <slot name="left-icon">
+                    <svg class="icon" aria-hidden="true" style="font-size: 12px;">
+                        <use xlink:href="#sdicon-undo"></use>
+                    </svg>
+                </slot>
+            </el-button>
             <el-button round :size="buttonSize" type="primary" :disabled="curPoint>=hisData.length-1" @click="gotoHistory(curPoint+1)">
-                <svg class="icon" aria-hidden="true" style="font-size: 12px;">
-                    <use xlink:href="#sdicon-redo"></use>
-                </svg>
+                <slot name="right-icon">
+                    <svg class="icon" aria-hidden="true" style="font-size: 12px;">
+                        <use xlink:href="#sdicon-redo"></use>
+                    </svg>
+                </slot>
             </el-button>
         </el-button-group>
     </div>

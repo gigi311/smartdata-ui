@@ -55,8 +55,10 @@ export default {
 
   computed: {
     navStyle() {
+      const t = `translateX(-${this.navOffset}px)`;
+      this.$emit("transform-change", t);
       return {
-        transform: `translateX(-${this.navOffset}px)`,
+        transform: t,
       };
     },
   },
